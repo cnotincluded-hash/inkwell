@@ -19,38 +19,6 @@ All data is saved to `localStorage` — no account, no server, no sync. Your wor
 
 ---
 
-## Getting Started
-
-### Prerequisites
-
-- [Node.js](https://nodejs.org/) v18 or higher
-- npm (comes with Node)
-
-### Install & Run
-
-```bash
-# Clone the repo
-git clone https://github.com/YOUR_USERNAME/inkwell.git
-cd inkwell
-
-# Install dependencies
-npm install
-
-# Start the dev server
-npm run dev
-```
-
-Then open [http://localhost:5173](http://localhost:5173) in your browser.
-
-### Build for Production
-
-```bash
-npm run build
-# Output is in the /dist folder — deploy anywhere (Vercel, Netlify, GitHub Pages, etc.)
-```
-
----
-
 ## Tech Stack
 
 | Tool | Purpose |
@@ -61,15 +29,7 @@ npm run build
 | [Tailwind CSS](https://tailwindcss.com/) | Utility styling |
 | [lucide-react](https://lucide.dev/) | Icons |
 
----
-
-## Deploying to Vercel
-
-1. Push this repo to GitHub
-2. Import it at [vercel.com/new](https://vercel.com/new)
-3. Vercel auto-detects Vite — just click **Deploy**
-
----
+[https://inkwell-writersspace.netlify.app/] 
 
 ## License
 
