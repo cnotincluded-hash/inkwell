@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="12" fill="hsl(228,38%,9%)"/>
+  <path d="M48 8 C48 8 20 20 16 44 L22 42 C24 32 34 22 48 8Z" fill="hsl(38,88%,62%)"/>
+  <path d="M16 44 L20 56 L26 46 L22 42 Z" fill="hsl(38,60%,45%)"/>
+  <path d="M20 56 L22 50" stroke="hsl(263,40%,18%)" stroke-width="1.5"/>
+</svg>

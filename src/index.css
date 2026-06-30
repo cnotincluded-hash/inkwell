@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar to match arcane aesthetic */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(228 38% 7%);
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(228 25% 22%);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(228 25% 30%);
+}
+
+/* Selection highlight */
+::selection {
+  background: hsl(38 88% 52% / 0.25);
+  color: hsl(38 88% 90%);
+}
