@@ -8,12 +8,12 @@ Inkwell is a dark-fantasy-themed writing environment with a wizard's-study aesth
 
 ## Features
 
-- **📜 Manuscript** — distraction-free writing surface styled like a parchment grimoire page, with per-scene word counts and target tracking
-- **🗺️ Chapter Map** — organize your book into chapters and scenes, each with a status tag (Unwritten / Drafting / Revising / Done)
-- **📚 Codex** — worldbuilding bible scoped per book: Characters, Locations, and Lore entries, switchable between multiple books
-- **⏳ Scriptorium** — writing sprint timer (15 / 25 / 45 / 60 min) that tracks words written during each sprint
-- **📝 Marginalia** — quick-capture scratchpad for stray ideas without breaking flow
-- **🦉 Inkfeather** — your owl familiar, perched in the corner. Cheers at productive sprints, naps when you're idle, and is always pettable.
+- **Manuscript** — distraction-free writing surface styled like a parchment grimoire page, with per-scene word counts and target tracking
+- **Chapter Map** — organize your book into chapters and scenes, each with a status tag (Unwritten / Drafting / Revising / Done)
+- **Codex** — worldbuilding bible scoped per book: Characters, Locations, and Lore entries, switchable between multiple books
+- **Scriptorium** — writing sprint timer (15 / 25 / 45 / 60 min) that tracks words written during each sprint
+- **Marginalia** — quick-capture scratchpad for stray ideas without breaking flow
+- **Inkfeather** — your owl familiar, perched in the corner. Cheers at productive sprints, naps when you're idle, and is always pettable.
 
 All data is saved to `localStorage` — no account, no server, no sync. Your words stay on your device.
 
