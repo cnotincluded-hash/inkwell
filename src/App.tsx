@@ -715,11 +715,24 @@ function ManuscriptPage({ chapters, activeScene, onSelectScene, onChange, goal, 
   { chapters:Chapter[]; activeScene:Scene|null; onSelectScene:(id:string)=>void; onChange:(c:string)=>void;
     goal:number; greeting:string; greetingSub:string; onFocus:()=>void; typewriter:boolean; onTypewriter:()=>void }) {
   const words = activeScene ? countWords(activeScene.content) : 0;
+  const [exportOpen, setExportOpen] = useState(false);
+  const exportRef = useRef<HTMLDivElement>(null);
+
+  // Close export dropdown on outside click
+  useEffect(() => {
+    if (!exportOpen) return;
+    function handler(e: MouseEvent) {
+      if (exportRef.current && !exportRef.current.contains(e.target as Node)) setExportOpen(false);
+    }
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [exportOpen]);
 
   function exportScene(fmt:"txt"|"md") {
     if(!activeScene) return;
     const content = fmt==="md" ? `## ${activeScene.title}\n\n${activeScene.content}` : activeScene.content;
     downloadFile(content, `${activeScene.title.replace(/\s+/g,"-")}.${fmt}`);
+    setExportOpen(false);
   }
   function exportChapter(fmt:"txt"|"md") {
     if(!activeScene) return;
@@ -733,6 +746,7 @@ function ManuscriptPage({ chapters, activeScene, onSelectScene, onChange, goal, 
         break;
       }
     }
+    setExportOpen(false);
   }
 
   return (
@@ -766,20 +780,23 @@ function ManuscriptPage({ chapters, activeScene, onSelectScene, onChange, goal, 
               <Maximize2 className="w-3.5 h-3.5"/> Focus
             </button>
             {activeScene && (
-              <div className="relative group">
-                <button className="flex items-center gap-1 px-2 py-1.5 rounded-md text-xs border opacity-60 hover:opacity-100 transition-colors"
+              <div className="relative" ref={exportRef}>
+                <button onClick={()=>setExportOpen(o=>!o)}
+                  className="flex items-center gap-1 px-2 py-1.5 rounded-md text-xs border opacity-60 hover:opacity-100 transition-colors"
                   style={{ color:"var(--text)", borderColor:"var(--border)" }}>
                   <Download className="w-3.5 h-3.5"/> Export
                 </button>
-                <div className="absolute right-0 top-full mt-1 rounded-xl border p-2 z-20 hidden group-hover:block min-w-[170px]"
-                  style={{ background:"var(--surface)", borderColor:"var(--border)" }}>
-                  {(["txt","md"] as ("txt"|"md")[]).flatMap(fmt=>[
-                    <button key={`s-${fmt}`} onClick={()=>exportScene(fmt)}
-                      className="w-full text-left px-3 py-1.5 rounded-lg text-xs hover:bg-white/5">Scene as .{fmt}</button>,
-                    <button key={`c-${fmt}`} onClick={()=>exportChapter(fmt)}
-                      className="w-full text-left px-3 py-1.5 rounded-lg text-xs hover:bg-white/5">Chapter as .{fmt}</button>,
-                  ])}
-                </div>
+                {exportOpen && (
+                  <div className="absolute right-0 top-full mt-1 rounded-xl border p-2 z-20 min-w-[170px] animate-in"
+                    style={{ background:"var(--surface)", borderColor:"var(--border)" }}>
+                    <div className="text-[10px] uppercase tracking-wider px-3 py-1 opacity-40">Scene</div>
+                    <button onClick={()=>exportScene("txt")} className="w-full text-left px-3 py-1.5 rounded-lg text-xs hover:bg-white/5">Save as .txt</button>
+                    <button onClick={()=>exportScene("md")}  className="w-full text-left px-3 py-1.5 rounded-lg text-xs hover:bg-white/5">Save as .md</button>
+                    <div className="text-[10px] uppercase tracking-wider px-3 py-1 mt-1 opacity-40">Chapter</div>
+                    <button onClick={()=>exportChapter("txt")} className="w-full text-left px-3 py-1.5 rounded-lg text-xs hover:bg-white/5">Save as .txt</button>
+                    <button onClick={()=>exportChapter("md")}  className="w-full text-left px-3 py-1.5 rounded-lg text-xs hover:bg-white/5">Save as .md</button>
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -887,7 +904,7 @@ function OutlinePage({ chapters, onAddChapter, onAddScene, onDeleteScene, onTogg
                           onDragEnd={()=>{ if(dragging&&dragOver&&dragging.chId===c.id&&dragOver.chId===c.id) onReorder(c.id,dragging.idx,dragOver.idx); setDragging(null); setDragOver(null); }}
                           className={cn("flex items-center gap-2 pl-6 pr-2 py-1.5 rounded-md group cursor-grab active:cursor-grabbing flex-wrap",
                             isOver?"ring-1":"hover:bg-white/5")}
-                          style={{ ["--tw-ring-color" as any]:"var(--accent)" }}>
+                          style={{ ringColor:"var(--accent)" }}>
                           <button onClick={()=>onSelectScene(s.id)} className="flex-1 min-w-[80px] text-left text-sm truncate" style={{ color:"var(--text)" }}>
                             {s.title}<span className="text-xs ml-2" style={{ color:"var(--dim)" }}>{countWords(s.content)}w</span>
                           </button>
