@@ -887,7 +887,7 @@ function OutlinePage({ chapters, onAddChapter, onAddScene, onDeleteScene, onTogg
                           onDragEnd={()=>{ if(dragging&&dragOver&&dragging.chId===c.id&&dragOver.chId===c.id) onReorder(c.id,dragging.idx,dragOver.idx); setDragging(null); setDragOver(null); }}
                           className={cn("flex items-center gap-2 pl-6 pr-2 py-1.5 rounded-md group cursor-grab active:cursor-grabbing flex-wrap",
                             isOver?"ring-1":"hover:bg-white/5")}
-                          style={{ ringColor:"var(--accent)" }}>
+                          style={{ ["--tw-ring-color" as any]:"var(--accent)" }}>
                           <button onClick={()=>onSelectScene(s.id)} className="flex-1 min-w-[80px] text-left text-sm truncate" style={{ color:"var(--text)" }}>
                             {s.title}<span className="text-xs ml-2" style={{ color:"var(--dim)" }}>{countWords(s.content)}w</span>
                           </button>
