@@ -15,6 +15,8 @@ Inkwell is a dark-fantasy-themed writing environment with a wizard's-study aesth
 - **📝 Marginalia** — quick-capture scratchpad for stray ideas without breaking flow
 - **🦉 Inkfeather** — your owl familiar, perched in the corner. Cheers at productive sprints, naps when you're idle, and is always pettable.
 
+- **🌧️ Soundscape** — mix real recordings of rain, a thunderstorm, a fireplace, a night sky, a stream, ocean waves and a coffee shop, each with its own volume. The files are in `public/sounds/`; credits and licences are in [SOUNDS.md](SOUNDS.md).
+
 All data is saved to `localStorage` — no account, no server, no sync. Your words stay on your device.
 
 ---
